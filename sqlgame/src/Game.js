@@ -6,7 +6,7 @@ import man from './man.png'
 export default function Game() {
     const questions = [
         "There's been a Murder in SQL City!  A crime has taken place and the detective needs your help. The detective gave you the crime scene report, but you somehow lost it. You vaguely remember that the crime was a murder that occurred sometime on Jan.15, 2018 and that it took place in SQL City. Start by retrieving the corresponding crime scene report from the police department’s database.",
-        "Security footage shows that there were 2 witnesses. The first witness lives at the last house on \"Northwestern Dr\" \n Got our crime scene report, as per the report there are 2 witnesses. Let's, look for the details of first witness",
+        "Security footage shows that there were two witnesses. The first witness named Morty lives at the last house on \"Northwestern Dr \". Let's, look for the details of first witness",
         "The second witness, named Annabel, lives somewhere on \"Franklin Ave\" \n Let's, look for the details of second witness",
         "lets view the interview of both the witnesses taken after the murder.",
         "So, we got 2 clues-  \n Killer is a man and a member of the gym with a status of gold and having a membership no. starting with 48Z and left in a car with a no. plate of H42W and He was working out in the gym on 9th of Jan. Check the gym database with above details",
@@ -16,7 +16,7 @@ export default function Game() {
         "Congrats, you found the murderer - Jeremy Bowers. Both the membership id and status also matches as per the information we found earlier.",
     ]
     const hints = ["Hints : Find all crime scene reports in 'SQL City' and sort them by date.",
-        "Hints : Find all persons on 'Northwestern Dr' and sort them by address number (highest to lowest).",
+        "Hints : Find all persons on 'Northwestern Dr' where street name is 'Northwestern Dr'. Note down the ID, It might be useful in further deduction.",
         "Hints : Find all persons on 'Annabel' where street name is 'Franklin Ave'.",
         "Hints : Retrieve all interviews for persons with ID 14887 or 16371.",
         "Hints : Retrieve all check-ins on Jan 9, 2018 for members with ID containing '48Z', and sort them by date.",

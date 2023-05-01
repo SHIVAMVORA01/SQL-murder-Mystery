@@ -20,8 +20,7 @@ ORDER BY date;
 '''
 SELECT *
 FROM person
-WHERE address_street_name = "Northwestern Dr"
-ORDER BY address_number desc;
+WHERE name like '%Morty%'  AND address_street_name = "Northwestern Dr";
 ''',
 '''
 SELECT *
