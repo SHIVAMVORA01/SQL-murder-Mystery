@@ -1,0 +1,35 @@
+.Homepage{
+  background-image: url('../assets/Background.png');
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.center-title{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.image{
+  height: 80%;
+  width: 80%;
+  margin-left: 10%;
+}
+  .start-button{
+    margin-top: -100px;
+    background: linear-gradient(14.59deg, #FFF8D7 9.81%, #FFDB34 79.99%);
+border: 4px solid #000000;
+border-radius: 80px;
+font-family: 'Corben';
+font-style: normal;
+font-weight: 400;
+font-size: 32px;
+line-height: 59px;
+color: #000000;
+transform: rotate(-0.26deg);
+text-decoration: none;
+  }
+  .start-button:hover{
+    background: linear-gradient(14.59deg, #FFF8D7 9.81%, #93802c 79.99%);
+  }

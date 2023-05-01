@@ -1,0 +1,68 @@
+.root-body{
+    background-image: url('../assets/background2.png');
+    height: 800px;
+}
+.outputWindow{
+background: #333333;
+border: 6px solid #9B851C;
+height: 300px;
+}
+.helpButton{
+background: #2C21A7;
+border-radius: 80px;
+font-family: 'Corben';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 37px;
+color: #FFFFFF;
+width: 173px;
+height: 43px;
+}
+.hintButton{
+font-family: 'Corben';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 37px;
+color: #FFFFFF;
+background: #A72921;
+border-radius: 80px;
+width: 173px;
+height: 43px;
+}
+
+.executeButton{
+font-family: 'Corben';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 37px;
+color: #FFFFFF;
+background: #21A727;
+border-radius: 80px;
+width: 173px;
+height: 43px;
+}
+.error{
+    background-color: #A72921;
+    color: #FFFFFF;
+    font-family: 'Corben';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 37px;
+color: #FFFFFF;
+
+}
+
+.message{
+    background-color: #21a721;
+    color: #FFFFFF;
+    font-family: 'Corben';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 37px;
+color: #FFFFFF;
+}
