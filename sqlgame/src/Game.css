@@ -1,6 +1,8 @@
 .root-body{
     background-image: url('../assets/background2.png');
-    height: 800px;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
 }
 .outputWindow{
 background: #333333;
@@ -10,7 +12,7 @@ height: 300px;
 .helpButton{
 background: #2C21A7;
 border-radius: 80px;
-font-family: 'Corben';
+font-family: 'Poppins';
 font-style: normal;
 font-weight: 400;
 font-size: 20px;
@@ -20,7 +22,7 @@ width: 173px;
 height: 43px;
 }
 .hintButton{
-font-family: 'Corben';
+font-family: 'Poppins';
 font-style: normal;
 font-weight: 400;
 font-size: 20px;
@@ -33,7 +35,7 @@ height: 43px;
 }
 
 .executeButton{
-font-family: 'Corben';
+font-family: 'Poppins';
 font-style: normal;
 font-weight: 400;
 font-size: 20px;
@@ -47,7 +49,7 @@ height: 43px;
 .error{
     background-color: #A72921;
     color: #FFFFFF;
-    font-family: 'Corben';
+    font-family: 'Poppins';
 font-style: normal;
 font-weight: 400;
 font-size: 20px;
@@ -59,10 +61,18 @@ color: #FFFFFF;
 .message{
     background-color: #21a721;
     color: #FFFFFF;
-    font-family: 'Corben';
+    font-family: 'Poppins';
 font-style: normal;
 font-weight: 400;
 font-size: 20px;
 line-height: 37px;
 color: #FFFFFF;
+}
+
+.root-body1{
+    background-image: url('../assets/background2.png');
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    color: aliceblue;
 }

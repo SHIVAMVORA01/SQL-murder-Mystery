@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import './Game.css';
 import { Col, Container, Row, Spinner } from 'react-bootstrap';
-
+import { Modal } from 'react-bootstrap';
+import schema from './schema.png'
 import man from './man.png'
 export default function Game() {
     const questions = [
@@ -34,6 +35,9 @@ export default function Game() {
     const [needHints, setHints] = useState(false);
     const [question, setQuestion] = useState(questions[0]);
     const [hint, setHint] = useState(hints[0]);
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     const tryRequire = (path) => {
         try {
@@ -68,7 +72,7 @@ export default function Game() {
                         setErrorMessage("");
                         setloading(false);
                         setQuery("");
-                        setMessage("Congratulations ")
+                        setMessage("Yes, you are right!!")
                         setIsError(false)
                     }, 5000)
 
@@ -79,7 +83,7 @@ export default function Game() {
                         setloading(false);
                         setMessage("")
                         setIsError(true)
-                        setErrorMessage("ooops try again!!");
+                        setErrorMessage("Ouch, you are wrong!!");
                     }, 1000)
                 }
             }
@@ -89,12 +93,12 @@ export default function Game() {
                     setloading(false);
                     setMessage("")
                     setIsError(true)
-                    setErrorMessage("ooops try again!!");
+                    setErrorMessage("Ouch, you are wrong!!");
                 }, 500)
             }
         }
         catch (err) {
-            setErrorMessage("ooops try again!!");
+            setErrorMessage("Ouch, you are wrong!!");
             setloading(false);
             setQuery("");
             setMessage("")
@@ -103,9 +107,18 @@ export default function Game() {
         }
 
     }
-
     return (
         loading === false ? <div className='root-body'>
+            <Modal show={show} onHide={handleClose}
+              size="xl"
+              aria-labelledby="contained-modal-title-vcenter"
+              centered
+            >
+        <Modal.Header closeButton>
+          <Modal.Title>Schema</Modal.Title>
+        </Modal.Header>
+        <Modal.Body><img src={schema} alt="schema"/></Modal.Body>
+      </Modal>
             <Container>
                 <Row>
                     <Col>
@@ -115,7 +128,7 @@ export default function Game() {
                                 {tableData ?
                                     <div style={{maxWidth:"600px"}}>
                                         {tableData ? <div >
-                                            {errorMessage.length === 0 ? <img src={tryRequire('./output.png')} alt="result" /> : null}
+                                            {errorMessage.length === 0 ? <img src={tryRequire('./output.png')} style={{ maxHeight: "400px", maxWidth: "600px" }} alt="result"  /> : null}
                                             {message ? <div className='message'>
                                                 {message}
                                             </div> : null}
@@ -132,12 +145,9 @@ export default function Game() {
                         </div>
                         <br />
                         <br />
-                        <textarea style={{ height: "300px", width: "500px" }} placeholder='Select ... <----Write your SQL Query here----->' onInput={(event) => { setQuery(event.target.value); }} value={query} />
-                        <br />
-                        <br />
                         <Row md={3}>
                             <Col>
-                                <button className='helpButton'><a  style={{textDecoration:"none",color:"#FFF"}} target='__blank' href='https://www.tutorialspoint.com/sql/index.htm'>Help </a></button>
+                                <button className='helpButton'onClick={handleShow}>View Schema </button>
                             </Col>
                             <Col>
                                 <button className='hintButton' onClick={() => { if (level < questions.length) setHints(true) }}>Hint </button>
@@ -146,13 +156,19 @@ export default function Game() {
                                 <button className='executeButton' onClick={() => { if (level < questions.length) executeSql() }}>Execute </button>
                             </Col>
                         </Row>
+                        <br />
+                        <br />
+                        <textarea style={{ height: "200px", width: "600px" }} placeholder='Select ... <----Write your SQL Query here----->' onInput={(event) => { setQuery(event.target.value); }} value={query} />
+                        <br />
+                        <br />
+                        
                     </Col>
                     <Col style={{ marginTop: "2%" }}>
-                        <div className="outputWindow" style={{ marginLeft: "35%", color: "#FFF", fontSize: "18px" }}>
-                            <div>
+                        <div className="outputWindow" style={{ marginLeft: "35%", color: "#FFF", fontSize: "18px", height:"330px" }}>
+                            <div style={{ marginLeft: "2%", marginTop:"2%", marginRight:"2%", textAlign:"justify" }} >
                                 {question}
                             </div>
-                            <div>{needHints ? hint : null}
+                            <div style={{ marginLeft: "2%", marginTop:"2%", marginRight:"2%", textAlign:"justify" }} >{needHints ? hint : null}
                             </div>
 
                         </div>
@@ -161,6 +177,6 @@ export default function Game() {
                     </Col>
                 </Row>
             </Container>
-        </div> : <center style={{marginTop:"30%"}}><Spinner /></center>
+        </div> : <center className="root-body1"><Spinner/>Loading</center>
     )
 }

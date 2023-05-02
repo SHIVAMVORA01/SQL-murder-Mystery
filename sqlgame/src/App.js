@@ -1,6 +1,7 @@
 import './Title.png';
 import '../src/App.css';
 import title from './Title.png';
+import video from './video.mp4';
 import { Link} from "react-router-dom";
 function App() {
   return (
@@ -14,3 +15,4 @@ function App() {
 }
 
 export default App;
+
