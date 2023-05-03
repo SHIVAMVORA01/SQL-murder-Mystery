@@ -4,9 +4,12 @@ import { Col, Container, Row, Spinner } from 'react-bootstrap';
 import { Modal } from 'react-bootstrap';
 import schema from './schema.png'
 import man from './man.png'
+import correctSound from './correct.mp3';
+import wrongSound from './wrong.mp3';
+
 export default function Game() {
     const questions = [
-        "There's been a Murder in SQL City!  A crime has taken place and the detective needs your help. The detective gave you the crime scene report, but you somehow lost it. You vaguely remember that the crime was a murder that occurred sometime on Jan.15, 2018 and that it took place in SQL City. Start by retrieving the corresponding crime scene report from the police department’s database.",
+        "There's been a Murder in SQL City!  A crime has taken place and I need your help. I have given you the crime scene report, but you somehow lost it. You vaguely remember that murder occurred sometime on Jan 15, 2018 and that it took place in SQL City. Start by retrieving the corresponding crime scene report from the police department’s database.",
         "Security footage shows that there were two witnesses. The first witness named Morty lives at the last house on \"Northwestern Dr \". Let's, look for the details of first witness",
         "The second witness, named Annabel, lives somewhere on \"Franklin Ave\" \n Let's, look for the details of second witness",
         "lets view the interview of both the witnesses taken after the murder.",
@@ -38,6 +41,9 @@ export default function Game() {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const correctAudio = new Audio(correctSound);
+    const wrongAudio = new Audio(wrongSound);
+
 
     const tryRequire = (path) => {
         try {
@@ -73,8 +79,9 @@ export default function Game() {
                         setloading(false);
                         setQuery("");
                         setMessage("Yes, you are right!!")
-                        setIsError(false)
-                    }, 5000)
+                        setIsError(false);
+                        correctAudio.play(); // Play correct sound
+                    }, 5000);
 
                 }
                 else {
@@ -84,7 +91,8 @@ export default function Game() {
                         setMessage("")
                         setIsError(true)
                         setErrorMessage("Ouch, you are wrong!!");
-                    }, 1000)
+                        wrongAudio.play(); // Play wrong sound
+                    }, 1000);
                 }
             }
             if (response.status === 400) {
@@ -94,11 +102,13 @@ export default function Game() {
                     setMessage("")
                     setIsError(true)
                     setErrorMessage("Ouch, you are wrong!!");
+                    wrongAudio.play(); // Play wrong sound
                 }, 500)
             }
         }
         catch (err) {
             setErrorMessage("Ouch, you are wrong!!");
+            wrongAudio.play(); // Play wrong sound
             setloading(false);
             setQuery("");
             setMessage("")
@@ -110,15 +120,15 @@ export default function Game() {
     return (
         loading === false ? <div className='root-body'>
             <Modal show={show} onHide={handleClose}
-              size="xl"
-              aria-labelledby="contained-modal-title-vcenter"
-              centered
+                size="xl"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
             >
-        <Modal.Header closeButton>
-          <Modal.Title>Schema</Modal.Title>
-        </Modal.Header>
-        <Modal.Body><img src={schema} alt="schema"/></Modal.Body>
-      </Modal>
+                <Modal.Header closeButton>
+                    <Modal.Title>Schema</Modal.Title>
+                </Modal.Header>
+                <Modal.Body><img src={schema} alt="schema" style={{ display: "block", marginLeft: "auto", marginRight: "auto" }} /></Modal.Body>
+            </Modal>
             <Container>
                 <Row>
                     <Col>
@@ -126,9 +136,9 @@ export default function Game() {
                         <div className="outputWindow" >
                             {isError === false && message.length > 0 ? <div>
                                 {tableData ?
-                                    <div style={{maxWidth:"600px"}}>
+                                    <div style={{ maxWidth: "600px" }}>
                                         {tableData ? <div >
-                                            {errorMessage.length === 0 ? <img src={tryRequire('./output.png')} style={{ maxHeight: "400px", maxWidth: "600px" }} alt="result"  /> : null}
+                                            {errorMessage.length === 0 ? <img src={tryRequire('./output.png')} style={{ maxHeight: "400px", maxWidth: "600px" }} alt="result" /> : null}
                                             {message ? <div className='message'>
                                                 {message}
                                             </div> : null}
@@ -145,9 +155,9 @@ export default function Game() {
                         </div>
                         <br />
                         <br />
-                        <Row md={3}>
+                        <Row md={3} className="justify-content-between">
                             <Col>
-                                <button className='helpButton'onClick={handleShow}>View Schema </button>
+                                <button className='helpButton' onClick={handleShow}>View Schema </button>
                             </Col>
                             <Col>
                                 <button className='hintButton' onClick={() => { if (level < questions.length) setHints(true) }}>Hint </button>
@@ -161,22 +171,21 @@ export default function Game() {
                         <textarea style={{ height: "200px", width: "600px" }} placeholder='Select ... <----Write your SQL Query here----->' onInput={(event) => { setQuery(event.target.value); }} value={query} />
                         <br />
                         <br />
-                        
+
                     </Col>
                     <Col style={{ marginTop: "2%" }}>
-                        <div className="outputWindow" style={{ marginLeft: "35%", color: "#FFF", fontSize: "18px", height:"330px" }}>
-                            <div style={{ marginLeft: "2%", marginTop:"2%", marginRight:"2%", textAlign:"justify" }} >
+                        <div className="outputWindow2" style={{ marginLeft: "10%" }}>
+                            <div style={{ marginLeft: "2%", marginTop: "2%", marginRight: "2%", textAlign: "justify" }} >
                                 {question}
                             </div>
-                            <div style={{ marginLeft: "2%", marginTop:"2%", marginRight:"2%", textAlign:"justify" }} >{needHints ? hint : null}
+                            <div style={{ marginLeft: "2%", marginTop: "2%", marginRight: "2%", textAlign: "justify" }} >{needHints ? hint : null}
                             </div>
-
                         </div>
-                        <img src={man} alt="gif" style={{height: "50%" }} />
+                        <img src={man} alt="gif" style={{ height: "50%" }} />
                         <br />
                     </Col>
                 </Row>
             </Container>
-        </div> : <center className="root-body1"><Spinner/>Loading</center>
+        </div> : <center className="root-body1"><Spinner />Loading</center>
     )
 }
