@@ -1,68 +1,368 @@
-.root-body{
-    background-image: url('../assets/background2.png');
-    height: 800px;
-}
-.outputWindow{
-background: #333333;
-border: 6px solid #9B851C;
-height: 300px;
-}
-.helpButton{
-background: #2C21A7;
-border-radius: 80px;
-font-family: 'Corben';
-font-style: normal;
-font-weight: 400;
-font-size: 20px;
-line-height: 37px;
-color: #FFFFFF;
-width: 173px;
-height: 43px;
-}
-.hintButton{
-font-family: 'Corben';
-font-style: normal;
-font-weight: 400;
-font-size: 20px;
-line-height: 37px;
-color: #FFFFFF;
-background: #A72921;
-border-radius: 80px;
-width: 173px;
-height: 43px;
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
+
+@font-face {
+  font-family: 'digital';
+  src: url('C:\Users\voras\Desktop\SQL-murder-Mystery\sqlgame\src\digital.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
-.executeButton{
-font-family: 'Corben';
-font-style: normal;
-font-weight: 400;
-font-size: 20px;
-line-height: 37px;
-color: #FFFFFF;
-background: #21A727;
-border-radius: 80px;
-width: 173px;
-height: 43px;
-}
-.error{
-    background-color: #A72921;
-    color: #FFFFFF;
-    font-family: 'Corben';
-font-style: normal;
-font-weight: 400;
-font-size: 20px;
-line-height: 37px;
-color: #FFFFFF;
 
+.root-body {
+  background: linear-gradient(
+    90deg,
+    rgba(26, 27, 36, 1) 0%,
+    rgba(26, 27, 36, 1) 50%,
+    rgba(20, 21, 28, 1) 50%,
+    rgba(20, 21, 28, 1) 100%
+  );
+  height: 100vh;
+  padding-top: 2%;
+  width: 100vw;
+  overflow-y: hidden;
 }
 
-.message{
-    background-color: #21a721;
-    color: #FFFFFF;
-    font-family: 'Corben';
-font-style: normal;
-font-weight: 400;
-font-size: 20px;
-line-height: 37px;
-color: #FFFFFF;
+.root-body1 {
+  background: linear-gradient(
+    90deg,
+    rgba(26, 27, 36, 1) 0%,
+    rgba(26, 27, 36, 1) 50%,
+    rgba(20, 21, 28, 1) 50%,
+    rgba(20, 21, 28, 1) 100%
+  );
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-family: "Lato", sans-serif;
+  color: white;
 }
+
+.outputWindow {
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #c4c4c4;
+  background-color: #2a2c3b;
+  font-size: 18px;
+  color: #ffffff;
+  text-align: left;
+  height: 310px;
+  width: 600px;
+}
+.outputWindow2 {
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #c4c4c4;
+  background-color: #2a2c3b;
+  font-size: 17px;
+  color: #ffffff;
+  text-align: left;
+  float: right;
+  height: 300px;
+  width: 400px;
+  padding: 10px;
+  line-height: 1.5;
+}
+
+.message {
+  color: greenyellow;
+  text-align: center;
+  font-size: 24px;
+  font-family: "Lato", sans-serif;
+}
+
+.error {
+  color: red;
+  text-align: center;
+  font-weight: bold;
+  font-size: 24px;
+  font-family: "Lato", sans-serif;
+}
+
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 70px;
+}
+
+.button-row button {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.hintButton {
+  background-color: #c4c4c4;
+  color: #363636;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  font-family: "Lato", sans-serif;
+  font-size: 18px;
+  margin-right: 10px;
+  cursor: pointer;
+  width: 100px;
+  transition: all 0.2s ease;
+}
+
+.hintButton:hover {
+  background-color: #363636;
+  color: white;
+}
+
+.executeButton {
+  background-color: #48b7b7;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  font-family: "Lato", sans-serif;
+  font-size: 18px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.executeButton:hover {
+  background-color: #363636;
+  color: white;
+}
+
+.helpButton {
+  background-color: #c4c4c4;
+  color: #363636;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  font-family: "Lato", sans-serif;
+  font-size: 18px;
+  margin-right: 10px;
+  margin-left: 60px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.helpButton:hover {
+  background-color: #363636;
+  color: white;
+}
+
+.sqlTutorialButton {
+  background-color: #c4c4c4;
+  color: #363636;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  font-family: "Lato", sans-serif;
+  font-size: 18px;
+  margin-right: 10px;
+  margin-left: 60px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sqlTutorialButton:hover {
+  background-color: #363636;
+  color: white;
+}
+
+textarea {
+  background-color: #2a2c3b;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 10px;
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+  resize: none;
+  outline: none;
+}
+
+textarea:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.start-button {
+  background-color: #48b7b7;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  font-family: "Lato", sans-serif;
+  font-size: 24px;
+  margin-top: 30px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.start-button:hover {
+  background-color: #363636;
+  color: white;
+}
+
+.center-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image {
+  height: 300px;
+}
+
+.root-body1 .spinner-border {
+  color: white;
+}
+
+.root-body1 .sr-only {
+  color: white;
+}
+
+@media (max-width: 576px) {
+  .outputWindow {
+    height: 200px;
+  }
+
+  .root-body {
+    padding-top: 10%;
+  }
+
+  .center-title {
+    margin-top: 20%;
+  }
+
+  .image {
+    height: 200px;
+  }
+
+  textarea {
+    height: 100px;
+    width: 300px;
+    font-size: 14px;
+  }
+
+  .outputWindow {
+    font-size: 14px;
+  }
+
+  .executeButton,
+  .hintButton,
+  .helpButton,
+  .start-button {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .root-body {
+    padding-top: 5%;
+  }
+
+  .center-title {
+    margin-top: 10%;
+  }
+
+  .image {
+    height: 250px;
+  }
+}
+
+@media (max-width: 992px) {
+  .center-title {
+    margin-top: 15%;
+  }
+
+  .image {
+    height: 250px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .center-title {
+    margin-top: 15%;
+  }
+
+  .image {
+    height: 250px;
+  }
+}
+
+.scoreboard {
+  background-color: #1A1B24;
+  color: #00ff00;
+  font-family: "Courier New", monospace;
+  font-size: 24px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  position: fixed;
+  bottom: 20px;
+  right: 50px;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #c4c4c4;
+}
+
+.score {
+  font-weight: bold;
+  font-size: 50px;
+}
+
+.label {
+  margin-left: 8px;
+}
+
+.modal-header {
+  background-color: #2a2c3b;
+  border-bottom: none;
+  text-align: center;
+}
+
+.modal-header h5 {
+  font-family: 'digital';
+  font-size: 32px;
+  color: #fff;
+  text-align: center;
+  text-shadow: 2px 2px #000;
+}
+
+.modal-body {
+  background-color: #2a2c3b;
+  color: #fff;
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+}
+
+.modal-footer {
+  border-top: none;
+  background-color: #2a2c3b;
+}
+
+.modal-footer button {
+  background-color: #48b7b7;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-footer button:hover {
+  background-color: #363636;
+  color: #fff;
+}
+
+.para {
+  text-align: center;
+  font-weight: bold;
+  font-size: 24px;
+}
+
