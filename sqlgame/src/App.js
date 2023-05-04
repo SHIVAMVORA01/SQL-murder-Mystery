@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 function App() {
   return (
   <div className='Homepage'>
-     <video className='video-background' autoPlay muted loop>
+     <video className='video-background' autoPlay loop>
          <source src={video} type='video/mp4' />
      </video>
      <div className='center-title'>

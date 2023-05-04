@@ -1,5 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
 
+@font-face {
+  font-family: 'digital';
+  src: url('C:\Users\voras\Desktop\SQL-murder-Mystery\sqlgame\src\digital.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 .root-body {
   background: linear-gradient(
     90deg,
@@ -74,6 +82,18 @@
   font-family: "Lato", sans-serif;
 }
 
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 70px;
+}
+
+.button-row button {
+  flex: 1;
+  margin-right: 10px;
+}
+
 .hintButton {
   background-color: #c4c4c4;
   color: #363636;
@@ -126,6 +146,25 @@
 }
 
 .helpButton:hover {
+  background-color: #363636;
+  color: white;
+}
+
+.sqlTutorialButton {
+  background-color: #c4c4c4;
+  color: #363636;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  font-family: "Lato", sans-serif;
+  font-size: 18px;
+  margin-right: 10px;
+  margin-left: 60px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sqlTutorialButton:hover {
   background-color: #363636;
   color: white;
 }
@@ -251,3 +290,79 @@ textarea:focus {
     height: 250px;
   }
 }
+
+.scoreboard {
+  background-color: #1A1B24;
+  color: #00ff00;
+  font-family: "Courier New", monospace;
+  font-size: 24px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  position: fixed;
+  bottom: 20px;
+  right: 50px;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #c4c4c4;
+}
+
+.score {
+  font-weight: bold;
+  font-size: 50px;
+}
+
+.label {
+  margin-left: 8px;
+}
+
+.modal-header {
+  background-color: #2a2c3b;
+  border-bottom: none;
+  text-align: center;
+}
+
+.modal-header h5 {
+  font-family: 'digital';
+  font-size: 32px;
+  color: #fff;
+  text-align: center;
+  text-shadow: 2px 2px #000;
+}
+
+.modal-body {
+  background-color: #2a2c3b;
+  color: #fff;
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+}
+
+.modal-footer {
+  border-top: none;
+  background-color: #2a2c3b;
+}
+
+.modal-footer button {
+  background-color: #48b7b7;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-footer button:hover {
+  background-color: #363636;
+  color: #fff;
+}
+
+.para {
+  text-align: center;
+  font-weight: bold;
+  font-size: 24px;
+}
+
