@@ -105,7 +105,7 @@ export default function Game() {
                     setloading(false);
                     setMessage("")
                     setIsError(true)
-                    setErrorMessage("Ouch, you are wrong!!");
+                    setErrorMessage("Wrong Input!!");
                     setScore(score - 20); 
                     wrongAudio.play(); 
                     if (score - 20 <= 0) {
@@ -117,7 +117,7 @@ export default function Game() {
             }
         }
         catch (err) {
-            setErrorMessage("Ouch, you are wrong!!");
+            setErrorMessage("Wrong Input!!");
             setScore(score - 20); 
             wrongAudio.play(); 
             setloading(false);

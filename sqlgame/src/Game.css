@@ -294,7 +294,6 @@ textarea:focus {
 .scoreboard {
   background-color: #1A1B24;
   color: #00ff00;
-  font-family: "Courier New", monospace;
   font-size: 24px;
   padding: 8px 16px;
   border-radius: 8px;

@@ -1,6 +1,5 @@
 import './Title.png';
 import '../src/App.css';
-import title from './Title.png';
 import video from './video.mp4';
 import { Link } from "react-router-dom";
 
@@ -11,7 +10,6 @@ function App() {
          <source src={video} type='video/mp4' />
      </video>
      <div className='center-title'>
-         <img className='image'  src={title} alt="Title" />
          <div className='button-container'>
              <Link className='start-button' to={'/game'}> Start game</Link>
          </div>
