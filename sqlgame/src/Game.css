@@ -294,7 +294,6 @@ textarea:focus {
 .scoreboard {
   background-color: #1A1B24;
   color: #00ff00;
-  font-family: "Courier New", monospace;
   font-size: 24px;
   padding: 8px 16px;
   border-radius: 8px;
@@ -364,5 +363,43 @@ textarea:focus {
   text-align: center;
   font-weight: bold;
   font-size: 24px;
+}
+
+.gameEndedModal .modalTitle {
+  color: #3c763d;
+  font-weight: bold;
+}
+
+.gameEndedModal .modalBodyContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.gameEndedModal .modalBodyText {
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.gameEndedModal .congratsImage {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.gameEndedModal .closeModalButton {
+  background-color: #5cb85c;
+  border-color: #5cb85c;
+}
+
+.scoreMessage {
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 20px;
 }
 

@@ -4,6 +4,7 @@ import { Col, Container, Row, Spinner } from 'react-bootstrap';
 import { Modal } from 'react-bootstrap';
 import schema from './schema.png'
 import man from './man.png'
+import congrats from './congrats.png'
 import correctSound from './correct.mp3';
 import wrongSound from './wrong.mp3';
 import Scoreboard from './Scoreboard.js';
@@ -47,7 +48,7 @@ export default function Game() {
     const [score, setScore] = useState(20);
     const [showInstructions, setShowInstructions] = useState(true);
     const [usedHints, setUsedHints] = useState([]);
-
+    const [gameEnded, setGameEnded] = useState(false);
 
     const tryRequire = (path) => {
         try {
@@ -56,6 +57,21 @@ export default function Game() {
             return null;
         }
     };
+
+    function resetGame() {
+        setLevel(0);
+        setQuery("");
+        setMessage("");
+        setIsError(false);
+        setTable(false);
+        setErrorMessage("");
+        setUsedHints(false);
+        setQuestion(questions[0]);
+        setHint(hints[0]);
+        setUsedHints([]);
+        setScore(20);
+    }
+
     async function executeSql() {
         try {
             setTable(false);
@@ -73,7 +89,7 @@ export default function Game() {
             if (response.status === 200) {
                 if (data['data']) {
                     setTimeout(() => {
-                        setQuestion(questions[level + 1])
+                        setQuestion(questions[level + 1]);
                         setHint(hints[level + 1]);
                         setHints(false);
                         setTable(true);
@@ -81,10 +97,13 @@ export default function Game() {
                         setErrorMessage("");
                         setloading(false);
                         setQuery("");
-                        setMessage("Yes, you are right!!")
+                        setMessage("Yes, you are right!!");
                         setIsError(false);
-                        setScore(score + 100); 
-                        correctAudio.play(); 
+                        setScore(score + 100);
+                        correctAudio.play();
+                        if (level === questions.length - 2) {
+                            setGameEnded(true);
+                        }
                     }, 5000);
 
                 } else {
@@ -94,8 +113,8 @@ export default function Game() {
                         setMessage("")
                         setIsError(true)
                         setErrorMessage("Ouch, you are wrong!!");
-                        setScore(score - 20); 
-                        wrongAudio.play(); 
+                        setScore(score - 20);
+                        wrongAudio.play();
                     }, 1000);
                 }
             }
@@ -105,21 +124,19 @@ export default function Game() {
                     setloading(false);
                     setMessage("")
                     setIsError(true)
-                    setErrorMessage("Ouch, you are wrong!!");
-                    setScore(score - 20); 
-                    wrongAudio.play(); 
+                    setErrorMessage("Wrong Input!!");
+                    wrongAudio.play();
                     if (score - 20 <= 0) {
-                        setScore(20); 
-                        setLevel(0); 
-                        setQuery(""); 
+                        setScore(20);
+                        setLevel(0);
+                        setQuery("");
                     }
                 }, 500)
             }
         }
         catch (err) {
-            setErrorMessage("Ouch, you are wrong!!");
-            setScore(score - 20); 
-            wrongAudio.play(); 
+            setErrorMessage("Wrong Input!!");
+            wrongAudio.play();
             setloading(false);
             setQuery("");
             setMessage("")
@@ -131,6 +148,42 @@ export default function Game() {
     return (
         loading === false ? <div className='root-body'>
             <Scoreboard score={score} />
+            <Modal className='gameEndedModal' show={gameEnded} onHide={() => setGameEnded(false)}>
+                <Modal.Body>
+                    <div className="modalBodyContent">
+                        <p className="modalBodyText">
+                            Your final score: <br></br><span className="score">{score}</span>
+                        </p>
+                        {score === 820 && (
+                            <p className="scoreMessage">You are a SQL Grandmaster!</p>
+                        )}
+                        {score >= 600 && score < 820 && (
+                            <p className="scoreMessage">You are a SQL Master!</p>
+                        )}
+                        {score < 600 && (
+                            <p className="scoreMessage">
+                                You need more SQL Skills to find the murderer.
+                            </p>
+                        )}
+                        <img
+                            className="congratsImage"
+                            src= {congrats} 
+                            alt="Congratulations"
+                        />
+                    </div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <button
+                        className="btn btn-primary"
+                        onClick={() => {
+                            setGameEnded(false);
+                            resetGame();
+                        }}
+                    >
+                        Close
+                    </button>
+                </Modal.Footer>
+            </Modal>
             <Modal show={showInstructions} onHide={() => setShowInstructions(false)}>
                 <Modal.Header closeButton>
                 </Modal.Header>
@@ -170,10 +223,7 @@ export default function Game() {
                                                 {message}
                                             </div> : null}
                                         </div> : null}
-
-                                    </div>
-
-                                    : null}
+                                    </div> : null}
                             </div> : <div>
                                 {errorMessage.length > 0 ? <img src={tryRequire('./output.png')} alt="result" /> : null}
                                 <div className='error'>
@@ -187,16 +237,22 @@ export default function Game() {
                             <button className='helpButton' onClick={handleShow}>Schema</button>
                             <button
                                 className='hintButton'
-                                disabled={usedHints.includes(level)}
+                                disabled={usedHints.includes(level) || level >= questions.length - 1}
                                 onClick={() => {
                                     setUsedHints([...usedHints, level]);
                                     setHints(true);
-                                    setScore(score - 10); 
+                                    setScore(score - 10);
                                 }}
                             >
                                 Hint
                             </button>
-                            <button className='executeButton' onClick={() => { if (level < questions.length) executeSql() }}>Execute</button>
+                            <button
+                                className='executeButton'
+                                disabled={level >= questions.length - 1}
+                                onClick={() => { if (level < questions.length) executeSql() }}
+                            >
+                                Execute
+                            </button>
                         </div>
 
                         <br />
