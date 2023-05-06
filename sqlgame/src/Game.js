@@ -167,12 +167,18 @@ export default function Game() {
                         )}
                         <img
                             className="congratsImage"
-                            src= {congrats} 
+                            src={congrats}
                             alt="Congratulations"
                         />
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
+                    <button
+                        className="btn btn-secondary feedback-button"
+                        onClick={() => window.open('https://forms.gle/N4EiqvSEywGri9pS7', '_blank')}
+                    >
+                        Give Feedback
+                    </button>
                     <button
                         className="btn btn-primary"
                         onClick={() => {
@@ -192,7 +198,7 @@ export default function Game() {
                     <p>Initially, You would be given 20 points. Enter SQL queries in the text area and click the Execute button to check your answer.</p>
                     <p>If your answer is correct, you will earn 100 points. If it is incorrect, you will lose 20 points.</p>
                     <p>If your score reaches 0, the game will end and you will need to start over with a new score of 20.</p>
-                    <p>You can click the Hint button to receive hints for each level of the game. The hint buttonw will get disabled after you click it once. Each hint will deduct 10 points from your score, so use them wisely!</p>
+                    <p>You can click the Hint button to receive hints for each level of the game. The hint button will get disabled after you click it once. Each hint will deduct 10 points from your score, so use them wisely!</p>
                     <p>Click the help button for more information about SQL syntax.</p>
                     <p>Good luck!</p>
                 </Modal.Body>
